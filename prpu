@@ -12,7 +12,7 @@ exit 0
 ;;
 esac
 echo -ne "Прогресс: 15%/n"
-git clone https://github.com/RomanDesigner/prepare-v2.git /home/$USER/.prptmp/prpscrtmp/
+git clone -q https://github.com/RomanDesigner/prepare-v2.git /home/$USER/.prptmp/prpscrtmp/
 echo -ne "Прогресс: 36%/n"
 rm /home/$USER/.prp/prp
 echo -ne "Прогресс: 48%/n"
