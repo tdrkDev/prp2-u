@@ -1,12 +1,37 @@
 #!/bin/bash
 # Simple in russian language updater.
+
 nver="cat /home/$USER/.prptmp/n.ver"
-echo -n "Обнаружено обновление. Вы согласны обновить prp? (да/Нет)"
+echo "Обнаружено обновление $nver. Вы согласны обновить prp? (да/Нет)"
 read agree
 case "$agree" in
 [д|Д][а|А]) echo "Начат процесс обновления. Не закрывайте терминал."
 ;;
 *) echo "Обновление отменено."
+exit 0
+;;
+esac
+echo -ne "Прогресс: 15%/n"
+git clone https://github.com/RomanDesigner/prepare-v2.git /home/$USER/.prptmp/prpscrtmp/
+echo -ne "Прогресс: 36%/n"
+rm /home/$USER/.prp/prp
+echo -ne "Прогресс: 48%/n"
+rm /home/$USER/.prp/prpver/t.ver
+echo -ne "Прогресс: 69%/n"
+cp /home/$USER/.prptmp/prpscrtmp/prp /home/$USER/.prp/prp
+echo -ne "Прогресс: 81%/n"
+cp /home/$USER/.prptmp/n.ver /home/$USER/.prp/prpver/t.ver
+echo -ne "Прогресс: 100%/n"
+echo -n "Запустить prp из папки /home/$USER/? (да/Нет)"
+read prpstr
+case "$prpstr" in
+[д|Д][а|А]) echo "Запуск prp..."
+rm -Rf /home/$USER/.prptmp
+cd /home/$USER/ && prp
+exit 0
+;;
+*) echo "Отмена запуска prp..."
+rm -Rf /home/$USER/.prptmp
 exit 0
 ;;
 esac
