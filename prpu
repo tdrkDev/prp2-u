@@ -38,6 +38,3 @@ rm -Rf /home/$USER/.prptmp
 exit 0
 ;;
 esac
-else
-exit 0
-fi
