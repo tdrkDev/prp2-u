@@ -1,9 +1,12 @@
 #!/bin/bash
-nver=cat /home/$USER/.prptmp/n.ver
+# Simple in russian language updater.
+nver="cat /home/$USER/.prptmp/n.ver"
 echo -n "Обнаружено обновление. Вы согласны обновить prp? (да/Нет)"
 read agree
 case "$agree" in
 [д|Д][а|А]) echo "Начат процесс обновления. Не закрывайте терминал."
 ;;
 *) echo "Обновление отменено."
-
+exit 0
+;;
+esac
